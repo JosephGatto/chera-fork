@@ -54,16 +54,18 @@ def main(label_type: int = 1):
         api_objs.append(api)
 
     df = pd.DataFrame(columns=["id", "raw_text"])  # new empty dataframe
-
+    NUM_TWEETS_EXTRACT = 100
     start_time = time.time()
     try:
         tweet_logger.info("Start grabbing tweets")
         chunk_size = 100 * len(api_objs)
         number_of_parallel_jobs = 32 * len(api_objs)  # increase or decrease for performance?
         backend = "threading"  # faster, no GIL is used
-        for index in range(0, len(tweet_ids), chunk_size):
+#         for index in range(0, len(tweet_ids), chunk_size):
+        for index in range(0, NUM_TWEETS_EXTRACT, chunk_size):
             start = index
             end = min(index + chunk_size, len(tweet_ids))  # don't go beyond length
+            end = min(index + chunk_size, NUM_TWEETS_EXTRACT)  # don't go beyond length
 
             if (end // api_rate_limit) - (start // api_rate_limit) > 0:
                 # rate limit has been hit
