@@ -4,8 +4,8 @@ import os
 
 import pandas as pd
 
-COAID_PATH = os.path.join(os.path.dirname(__file__), "..", "CoAID")
-FAKE_TWEET_PATH = os.getcwd()
+COAID_PATH = os.path.join("/content/covid19_misinformation/", "CoAID")
+FAKE_TWEET_PATH = "/content/covid19_misinformation/data/"
 
 df_news_fake_tweet = pd.read_csv(os.path.join(COAID_PATH, "NewsFakeCOVID-19_tweets.csv"))
 
