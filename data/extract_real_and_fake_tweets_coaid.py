@@ -54,7 +54,7 @@ def main(label_type: int = 1):
         api_objs.append(api)
 
     df = pd.DataFrame(columns=["id", "raw_text"])  # new empty dataframe
-    NUM_TWEETS_EXTRACT = 100
+    NUM_TWEETS_EXTRACT = 500
     start_time = time.time()
     try:
         tweet_logger.info("Start grabbing tweets")
